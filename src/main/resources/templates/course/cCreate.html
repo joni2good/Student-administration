@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Create new course</title>
+    <!-- stylesheet -->
+    <link rel="stylesheet" type="text/css" href="/css/styles.css">
+</head>
+<body>
+
+    <div class="navbar">
+        <header>
+            <a href="/course/course_index"><img href="/course/course_index" src="/../../img/KEAlogo.png"></a>
+            <div class="menu">
+                <ul>
+                    <nav>
+                        <li><a href="/" class="hover-link">Students</a></li>
+                        <li><a href="/student/create" class="hover-link">Create student</a></li>
+                        <li><a href="/course/course_index" class="hover-link">Courses</a></li>
+                    </nav>
+                </ul>
+            </div>
+        </header>
+    </div>
+
+    <div class="pad-left containers">
+
+        <h1>New information</h1>
+        <form action="/course/created" method="post">
+            <p>Course name:</p>
+            <input type="text" name="cName" id="cName">
+            <p>Course location:</p>
+            <input type="text" name="loc" id="loc">
+            <p>ECTS points:</p>
+            <input type="number" name="ects" id="ects" min="0" max="90" step="15" value="0">
+            <p>Start date:</p>
+            <input type="date" name="startDate" id="startDate">
+            <br>
+            <input class="btn" type="submit" name="submit form via POST" value="Create">
+        </form>
+
+    </div>
+
+</body>
+</html>

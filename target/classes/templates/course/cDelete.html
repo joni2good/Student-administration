@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Delete course</title>
+    <!-- stylesheet -->
+    <link rel="stylesheet" type="text/css" href="/css/styles.css">
+</head>
+<body>
+
+<div class="navbar">
+    <header>
+        <a href="/course/course_index"><img href="/course/course_index" src="/../../img/KEAlogo.png"></a>
+        <div class="menu">
+            <ul>
+                <nav>
+                    <li><a href="/" class="hover-link">Students</a></li>
+                    <li><a href="/student/create" class="hover-link">Create student</a></li>
+                    <li><a href="/course/course_index" class="hover-link">Courses</a></li>
+                    <li><a href="/course/cCreate" class="hover-link">Create course</a></li>
+                </nav>
+            </ul>
+        </div>
+    </header>
+</div>
+
+<div class="pad-left">
+    <h1>Delete</h1>
+    <h3>Are you sure you want to delete</h3>
+    <h3 th:text="${course.getCName()}"></h3>
+
+    <table>
+
+        <tr>
+            <a th:href="@{/course/cDelete/yes/__${course.id}__}">
+                <button class="btn-del btn">Delete</button>
+            </a>
+        </tr>
+
+        <tr>
+            <a href="/course/course_index">
+                <button class="btn">No</button>
+            </a>
+        </tr>
+    </table>
+</div>
+
+</body>
+</html>

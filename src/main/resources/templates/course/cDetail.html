@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+
+    <meta charset="UTF-8">
+    <title>Course details</title>
+    <link href="/css/styles.css" rel="stylesheet" type="text/css">
+<!--    <link href="/css/topNav.css" rel="stylesheet" type="text/css">-->
+<!--    <link rel="icon" type="image/png" href="img/kea.png">-->
+
+</head>
+<body>
+
+    <div class="navbar">
+        <header>
+            <a href="/course/course_index"><img href="/course/course_index" src="/../../img/KEAlogo.png"></a>
+            <div class="menu">
+                <ul>
+                    <nav>
+                        <li><a href="/" class="hover-link">Students</a></li>
+                        <li><a href="/student/create" class="hover-link">Create student</a></li>
+                        <li><a href="/course/course_index" class="hover-link">Courses</a></li>
+                        <li><a href="/course/cCreate" class="hover-link">Create course</a></li>
+                    </nav>
+                </ul>
+            </div>
+        </header>
+    </div>
+
+    <div class="container">
+
+        <h1>Details</h1>
+        <table>
+            <tr>
+                <th>Id</th>
+                <th>Course name</th>
+                <th>Location</th>
+                <th>ECTS points</th>
+                <th>Start date</th>
+            </tr>
+
+            <tr>
+                <th th:text="${course.getId()}"></th>
+                <th th:text="${course.getCName()}"></th>
+                <th th:text="${course.getLoc()}"></th>
+                <th th:text="${course.getEcts()}"></th>
+                <th th:text="${course.getStartDate()}"></th>
+            </tr>
+        </table>
+
+        <br>
+
+        <table>
+            <h2>Attendees</h2>
+            <tr>
+                <th>ID</th>
+                <th>First name</th>
+                <th>Last name</th>
+                <th>Enrollment</th>
+                <th></th>
+            </tr>
+
+            <tr th:each="student : ${students}">
+                <th th:text="${student.id}"></th>
+                <th th:text="${student.firstName}"></th>
+                <th th:text="${student.lastName}"></th>
+                <th th:text="${student.enrollmentDate}"></th>
+                <th>
+                    <a th:href="@{/course/cRemove/__${course.id}__/__${student.id}__}">
+                        <button class="btn-del btn">Remove</button>
+                    </a>
+                </th>
+            </tr>
+        </table>
+    </div>
+</body>
+</html>

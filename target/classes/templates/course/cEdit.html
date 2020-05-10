@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org"><head>
+    <meta charset="UTF-8">
+    <title>Edit course information</title>
+    <!-- stylesheet -->
+    <link rel="stylesheet" type="text/css" href="/css/styles.css">
+</head>
+<body>
+
+<div class="navbar">
+    <header>
+        <a href="/course/course_index"><img href="/course/course_index" src="/../../img/KEAlogo.png"></a>
+        <div class="menu">
+            <ul>
+                <nav>
+                    <li><a href="/" class="hover-link">Students</a></li>
+                    <li><a href="/student/create" class="hover-link">Create student</a></li>
+                    <li><a href="/course/course_index" class="hover-link">Courses</a></li>
+                    <li><a href="/course/cCreate" class="hover-link">Create course</a></li>
+                </nav>
+            </ul>
+        </div>
+    </header>
+</div>
+
+
+
+<div class="pad-left container">
+    <h1>Current information</h1>
+
+    <table>
+        <tr>
+            <th>Course name</th>
+            <th>Location</th>
+            <th>ECTS points</th>
+            <th>Start date</th>
+        </tr>
+
+        <tr>
+            <th th:text="${course.getCName()}"></th>
+            <th th:text="${course.getLoc()}"></th>
+            <th th:text="${course.getEcts()}"></th>
+            <th th:text="${course.getStartDate()}"></th>
+        </tr>
+    </table>
+
+    <h1>New information</h1>
+    <form action="/course/edited" method="post">
+        <p>Course name:</p>
+        <input type="text" name="cName" id="cName">
+        <p>Course location:</p>
+        <input type="text" name="loc" id="loc">
+        <p>ECTS points:</p>
+        <input type="number" name="ects" id="ects" min="0" max="90" step="15" value="0">
+        <p>Start date:</p>
+        <input type="date" name="startDate" id="startDate">
+        <input type="hidden" name="id" id="id" th:value="${course.id}">
+        <br>
+        <input class="btn" type="submit" name="submit form via POST">
+    </form>
+</div>
+
+</body>
+</html>

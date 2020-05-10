@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+
+    <meta charset="UTF-8">
+    <title>Student details</title>
+    <link href="/css/styles.css" rel="stylesheet" type="text/css">
+    <link href="/css/topNav.css" rel="stylesheet" type="text/css">
+    <link rel="icon" type="image/png" href="img/kea.png">
+
+</head>
+<body>
+
+    <div class="navbar">
+        <header>
+            <a href="/"><img href="/" src="/../../img/KEAlogo.png"></a>
+            <div class="menu">
+                <ul>
+                    <nav>
+                        <li><a href="/" class="hover-link">Students</a></li>
+                        <li><a href="/student/create" class="hover-link">Create student</a></li>
+                        <li><a href="/course/course_index" class="hover-link">Courses</a></li>
+                        <li><a href="/course/cCreate" class="hover-link">Create course</a></li>
+                    </nav>
+                </ul>
+            </div>
+        </header>
+    </div>
+
+    <div class="container">
+
+        <h1>Details</h1>
+        <table>
+            <tr>
+                <th>ID</th>
+                <th>First name</th>
+                <th>Last name</th>
+                <th>Enrollment date</th>
+                <th>CPR</th>
+            </tr>
+
+            <tr>
+                <th th:text="${student.getId()}"></th>
+                <th th:text="${student.getFirstName()}"></th>
+                <th th:text="${student.getLastName()}"></th>
+                <th th:text="${student.getEnrollmentDate()}"></th>
+                <th th:text="${student.getCpr()}"></th>
+            </tr>
+        </table>
+    </div>
+
+</body>
+</html>

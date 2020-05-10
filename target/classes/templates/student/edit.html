@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org"><head>
+    <meta charset="UTF-8">
+    <title>Edit student information</title>
+    <!-- stylesheet -->
+    <link rel="stylesheet" type="text/css" href="/css/styles.css">
+</head>
+<body>
+
+    <div class="navbar">
+        <header>
+            <a href="/"><img href="/" src="/../../img/KEAlogo.png"></a>
+            <div class="menu">
+                <ul>
+                    <nav>
+                        <li><a href="/" class="hover-link">Students</a></li>
+                        <li><a href="/student/create" class="hover-link">Create student</a></li>
+                        <li><a href="/course/course_index" class="hover-link">Courses</a></li>
+                        <li><a href="/course/cCreate" class="hover-link">Create course</a></li>
+                    </nav>
+                </ul>
+            </div>
+        </header>
+    </div>
+
+
+
+<div class="pad-left container">
+    <h1>Current information</h1>
+
+    <table>
+        <tr>
+            <th>First name</th>
+            <th>Last name</th>
+            <th>Enrollment date</th>
+            <th>CPR</th>
+        </tr>
+
+        <tr>
+            <th th:text="${student.getFirstName()}"></th>
+            <th th:text="${student.getLastName()}"></th>
+            <th th:text="${student.getEnrollmentDate()}"></th>
+            <th th:text="${student.getCpr()}"></th>
+        </tr>
+    </table>
+
+    <h1>New information</h1>
+    <form action="/student/edited" method="post">
+        <p>First name:</p>
+        <input type="text" name="firstName" id="firstName">
+        <p>Last name:</p>
+        <input type="text" name="lastName" id="lastName">
+        <p>Enrollment date:</p>
+        <input type="date" name="enrollmentDate" id="enrollmentDate">
+        <p>CPR:</p>
+        <input type="text" name="cpr" id="cpr" placeholder="123456-1234">
+        <input type="hidden" name="id" id="id" th:value="${student.id}">
+        <br>
+        <input class="btn" type="submit" name="submit form via POST">
+    </form>
+</div>
+
+</body>
+</html>

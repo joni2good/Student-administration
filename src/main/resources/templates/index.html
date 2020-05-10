@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Student Administration</title>
+    <!-- stylesheet -->
+    <link rel="stylesheet" type="text/css" href="/css/styles.css">
+</head>
+<body>
+
+    <div class="navbar">
+        <header>
+            <a href="/course/course_index"><img src="img/KEAlogo.png"></a>
+            <div class="menu">
+                <ul>
+                    <nav>
+                        <li><a href="/student/create" class="hover-link">Create Student</a></li>
+                        <li><a href="/course/course_index" class="hover-link">Courses</a></li>
+                        <li><a href="/course/cCreate" class="hover-link">Create course</a></li>
+                    </nav>
+                </ul>
+            </div>
+        </header>
+    </div>
+
+    <div class="container">
+        <h1>Student administration</h1>
+
+        <table>
+            <tr>
+                <th>ID</th>
+                <th>First name</th>
+                <th>Last name</th>
+                <th>Enrollment</th>
+                <th></th>
+            </tr>
+
+            <tr th:each="student : ${students}">
+                <th th:text="${student.id}"></th>
+                <th th:text="${student.firstName}"></th>
+                <th th:text="${student.lastName}"></th>
+                <th th:text="${student.enrollmentDate}"></th>
+                <th>
+                    <a th:href="@{/student/detail/__${student.id}__}">
+                        <button class="btn">Details</button>
+                    </a>
+
+                    <a th:href="@{/student/edit/__${student.id}__}">
+                        <button class="btn-ed btn">Edit</button>
+                    </a>
+
+                    <a th:href="@{/student/delete/__${student.id}__}">
+                        <button class="btn-del btn">Delete</button>
+                    </a>
+                </th>
+
+
+            </tr>
+        </table>
+    </div>
+</body>
+</html>

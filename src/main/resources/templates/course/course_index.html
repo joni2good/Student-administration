@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Course Administration</title>
+    <!-- stylesheet -->
+    <link rel="stylesheet" type="text/css" href="/css/styles.css">
+</head>
+<body>
+
+    <div class="navbar">
+        <header>
+            <a href="/"><img src="/../img/KEAlogo.png"></a>
+            <div class="menu">
+                <ul>
+                    <nav>
+                        <li><a href="/" class="hover-link">Students</a></li>
+                        <li><a href="/student/create" class="hover-link">Create student</a></li>
+                        <li><a href="/course/cCreate" class="hover-link">Create course</a></li>
+                    </nav>
+                </ul>
+            </div>
+        </header>
+    </div>
+
+    <div class="container">
+        <h1>Course administration</h1>
+
+        <table>
+
+            <tr>
+                <th>ID</th>
+                <th>Course name</th>
+                <th>Location</th>
+                <th></th>
+            </tr>
+
+            <tr th:each="course : ${courses}">
+                <th th:text="${course.id}"></th>
+                <th th:text="${course.cName}"></th>
+                <th th:text="${course.loc}"></th>
+                <th>
+                    <a th:href="@{/course/cDetail/__${course.id}__}">
+                        <button class="btn">Details</button>
+                    </a>
+
+                    <a th:href="@{/course/cEdit/__${course.id}__}">
+                        <button class="btn-ed btn">Edit</button>
+                    </a>
+
+                    <a th:href="@{/course/cAddStu/__${course.id}__}">
+                        <button class="btn">Add student</button>
+                    </a>
+
+                    <a th:href="@{/course/cDelete/__${course.id}__}">
+                        <button class="btn-del btn">Delete</button>
+                    </a>
+                </th>
+            </tr>
+
+        </table>
+    </div>
+</body>
+</html>
